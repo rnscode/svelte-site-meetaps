@@ -1,7 +1,7 @@
 <script>
 	import Header from './Components/UI/Header.svelte';
 	import MeetupGrid from './Components/Meetups/MeetupGrid.svelte';
-
+	import TextInput from './Components/UI/TextInput.svelte';
 
 	let title = '';
 	let subtitle = '';
@@ -65,30 +65,49 @@
 
 <main>
 	<form on:submit|preventDefault={addMeetup}>
-		<div class="form-control">
-			<label for="title">Title</label>
-			<input type="text" id="title" bind:value={title}/>
-		</div>
-		<div class="form-control">
-			<label for="subtitle">Subtitle</label>
-			<input type="text" id="subtitle"bind:value={subtitle}/>
-		</div>
-		<div class="form-control">
-			<label for="address">Address</label>
-			<input type="text" id="address" bind:value={address}/>
-		</div>
-		<div class="form-control">
-			<label for="imageUrl">Image URL</label>
-			<input type="text" id="imageUrl" bind:value={imageUrl}/>
-		</div>
-		<div class="form-control">
-			<label for="email">Email</label>
-			<input type="email" id="email" bind:value={contactEmail}/>
-		</div>
-		<div class="form-control">
-			<label for="description">Description</label>
-			<textarea rows="3" id="description" bind:value={description}/>
-		</div>
+		<TextInput 
+		id="title" 
+		label="Title" 
+		value={title} 
+		type="text"
+		on:input={event => (title = event.target.value)}/>
+
+		<TextInput 
+		id="subtitle" 
+		label="Subtitle" 
+		value={subtitle} 
+		type="text"
+		on:input={event => (subtitle = event.target.value)}/>
+
+		<TextInput 
+		id="address" 
+		label="Address" 
+		value={address} 
+		type="text"
+		on:input={event => (address = event.target.value)}/>
+
+		<TextInput 
+		id="imageUrl" 
+		label="Image URL" 
+		value={imageUrl} 
+		type="text"
+		on:input={event => (imageUrl = event.target.value)}/>
+		
+		<TextInput 
+		id="email" 
+		label="E-mail" 
+		value={contactEmail} 
+		type="email"
+		on:input={event => (contactEmail = event.target.value)}/>
+	
+		<TextInput 
+		id="description" 
+		label="Description" 
+		value={description}
+		controlType="textarea" 
+		rows="3"
+		on:input={event => (description = event.target.value)}/>
+		
 		<button type="submit">Save</button>
 	</form>
 
